@@ -59,6 +59,7 @@ Die Files werden in einem Unterordner html und gifs abgelegt. Dabei wird klar, d
 Die Extraktion wurde am 4. Oktober 2023 10:10 CET gemacht.
 
 ## Fav Icons
+Diese sind nicht immer vorhanden. Dort wo sie zu finden sind, sind sie unter `http://<domain>/facicon.ico`. Diese sind auf dem Server selber und nicht im HTML file definiert. Es ist also nicht klar ob das bewusst dazu gehört, aber es verändert die Anzeige im Tab des Browsers wenn sie nicht vorhanden sind. Deshalb wurden sie ebenfalls archiviert.
 
 ## Wayback Maschine
 Um die fehlenden Frames zu Retten wurde die WayBack Maschine des Internet Archives verwendet. Dies wurde manuel gemacht in dem auf
@@ -96,3 +97,14 @@ Der Titel besteht aus dem Unicode zeichen ☼. Dieses Zeichen wird als [white su
 Das Symbol wird in mehreren HTML Dokumenten falsch angezeigt, was darauf hindeuted, dass das Zeichen nicht mit UFT-8 Kodiert wurde. Es funktioniert aber immernoch korrekt und wird deshalb nicht angepasst.
 
 
+# Vorgehen Archivwebseite
+Die Erstellung der Webseite startet zuerst mit dem Skrip [archiv/wget_script.py](archiv/wget_script.py). Diese Skript verwendet die [datenbank.csv](datenbank.csv), um alle Seiten mit Bildern herunterzuladen. Dies klappt bei der Mehrheit der Seiten, aber nicht bei allen.
+
+Die favicons werden ebenfalls kopiert, da wget diese nicht holt, da das facicon nicht im HTML definiert ist, aber dennoch angezeigt wird, wenn es auf der Domäne definiert ist. Dies ist eine Eigenschaft des Browsers und möglicherweise war dies nicht immer so!
+
+Die restlichen Seiten wurden manuel erstellt durch das Kopieren der Dateien aus dem [original](original) Ordner.
+
+Kopierte Seiten:
+
+- bukk.it
+- 

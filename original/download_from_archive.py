@@ -4,10 +4,10 @@ from requests import get
 with open("original/archive_links.csv", "r") as f:
     links = f.readlines()[1:]
 
-if not os.path.exists("html"):
+if not os.path.exists("original/html"):
     os.mkdir("original/html")
 
-if not os.path.exists("gifs"):
+if not os.path.exists("original/gifs"):
     os.mkdir("original/gifs")
 
 for link in links:
