@@ -1,0 +1,47 @@
+<!doctype html>
+<!-- niko -->
+<head>
+    <meta charset="utf8">
+    <title>☼</title>
+    <script type="text/javascript">
+        var chain = [["http://www.sebastianschmieg.com/olia/summer/"], ["http://GLI.TC/H/olia/summer/", "http://www.constantdullaart.com/olia/summer/"]];
+        var step = 0;
+        var select_next = function(){return Math.floor(Math.random()*chain[step].length)};
+        var branch;
+        var branch_initial = branch = select_next();
+        
+        window.onload = function(){
+            setTimeout(function(){
+                top.location = chain[step][branch];
+            }, 150);
+            setInterval(function(){
+                branch++;
+                if(branch == chain[step].length) branch = 0;
+                if(branch == branch_initial) {
+                    step++;
+                    if(step == chain.length) step = 0;
+                    branch_initial = branch = select_next();
+                }
+                top.location = chain[step][branch]
+            }, 3000)
+        }
+    </script>
+    <style type="text/css">
+    body {
+        margin: 0;
+        padding: 0;
+        background: white;
+        background: -webkit-linear-gradient(-90deg, blue, white);
+        background:         linear-gradient(to bottom, blue, white);
+        background-repeat: repeat-x;
+        background-size: 100% 330px;
+    }
+    img {
+        display: block;
+        margin: 0 auto;
+    }
+    </style>
+</head>
+<body>
+    <img src="olia03.gif" width="146" height="374">
+</body>

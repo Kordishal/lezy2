@@ -1,0 +1,45 @@
+<!doctype html>
+<!-- saskia -->
+<head>
+    <meta charset="utf8">
+    <title>☼</title>
+    <script type="text/javascript">
+        var chain = [["http://1x-upon.com/~despens/olia/summer/"], ["http://www.newrafael.com/olia/summer/", "http://www.entropy8.com/olia/summer/"], ["http://saskia-aldinger.com/olia/summer/"], ["http://www.sebastianschmieg.com/olia/summer/"], ["http://GLI.TC/H/olia/summer/", "http://www.constantdullaart.com/olia/summer/"], ["http://jonaslund.biz/olia/summer/"], ["http://thxalot.org/olia/summer/"], ["http://www.raquelmeyers.com/olia/summer/"], ["http://www.anthonyantonellis.com/olia/summer/"], ["http://www.emiliegervais.com/olia/summer/"], ["http://kimasendorf.com/olia/summer/"], ["http://shorttermmemoryloss.com/olia/summer/"], ["http://todayandtomorrow.net/olia/summer/"], ["http://benfinoradin.info/olia/summer/"], ["http://www.leegte.org/olia/summer/"], ["http://www.faithholland.com/olia/summer/", "http://fernandoalfonso.com/olia/summer/"], ["http://www.evan-roth.com/olia/summer/"], ["http://k0a1a.net/olia/summer/"]];
+        var step = 3;
+        var branch_initial = branch = Math.floor(Math.random()*chain[step].length);
+        
+        window.onload = function(){
+            setTimeout(function(){
+                top.location = chain[step][branch];
+            }, 150);
+            setInterval(function(){
+                branch++;
+                if(branch == chain[step].length) branch = 0;
+                if(branch == branch_initial) {
+                    branch_initial = branch = 0;
+                    step++;
+                    if(step == chain.length) step = 0;
+                }
+                top.location = chain[step][branch]
+            }, 3000)
+        }
+    </script>
+    <style type="text/css">
+    body {
+        margin: 0;
+        padding: 0;
+        background: white;
+        background: -webkit-linear-gradient(-90deg, blue, white);
+        background:         linear-gradient(to bottom, blue, white);
+        background-repeat: repeat-x;
+        background-size: 100% 330px;
+    }
+    img {
+        display: block;
+        margin: 0 auto;
+    }
+    </style>
+</head>
+<body>
+    <img src="olia03.gif" width="146" height="374">
+</body>

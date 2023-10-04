@@ -1,0 +1,13 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: white;
+    background: -webkit-linear-gradient(-90deg, blue, white);
+    background:         linear-gradient(to bottom, blue, white);
+    background-repeat: repeat-x;
+    background-size: 100% 330px;
+}
+img {
+    display: block;
+    margin: 0 auto;
+}
