@@ -1,0 +1,42 @@
+User-agent: Googlebot
+Allow: /
+
+User-agent: DuckDuckbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: *
+Disallow: /scripts/
+Disallow: /perl/
+Disallow: /rhizome/
+Disallow: /images/
+Disallow: /tmp/
+Disallow: /video/
+Disallow: /sound/video/
+Disallow: /sound/mp3/
+Disallow: /sound/img/
+Disallow: /sound/pages/
+Disallow: /sound/en/
+Disallow: /beinghuman/poll/
+Disallow: /bramtv/
+Disallow: /wishes/image/
+Disallow: /wishes/sound/
+Disallow: /ext/
+Disallow: /peur/image
+Disallow: /peur/son/
+Disallow: /serf/serf.exe
+Disallow: /serf/cellsandmaps.exe
+Disallow: /serf/electrophy.exe
+Disallow: /serf/clusters.exe
+Disallow: /serf/cytoflo.exe
+Disallow: /serf/sounds.exe
+Disallow: /xlplot/xlplot.exe
+Disallow: /xlplot/xlplotfr.exe
+Disallow: /confort/compli.htm
+Disallow: /confort/compli.mp3
+

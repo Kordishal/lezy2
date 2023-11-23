@@ -59,7 +59,11 @@ Die Files werden in einem Unterordner html und gifs abgelegt. Dabei wird klar, d
 Die Extraktion wurde am 4. Oktober 2023 10:10 CET gemacht.
 
 ## Fav Icons
-Diese sind nicht immer vorhanden. Dort wo sie zu finden sind, sind sie unter `http://<domain>/facicon.ico`. Diese sind auf dem Server selber und nicht im HTML file definiert. Es ist also nicht klar ob das bewusst dazu gehört, aber es verändert die Anzeige im Tab des Browsers wenn sie nicht vorhanden sind. Deshalb wurden sie ebenfalls archiviert.
+Diese sind nicht immer vorhanden. Dort wo sie zu finden sind, sind sie unter `https://<domain>/facicon.ico`. Diese sind auf dem Server selber und nicht im HTML file definiert. Es ist also nicht klar ob das bewusst dazu gehört, aber es verändert die Anzeige im Tab des Browsers wenn sie nicht vorhanden sind. Deshalb wurden sie ebenfalls archiviert.
+
+## Namensgebung der Dateien Dokumentiert
+
+
 
 ## Wayback Maschine
 Um die fehlenden Frames zu Retten wurde die WayBack Maschine des Internet Archives verwendet. Dies wurde manuel gemacht in dem auf
@@ -108,3 +112,27 @@ Kopierte Seiten:
 
 - bukk.it
 - 
+
+## SQUID
+
+http://www.squid-cache.org/Doc/config/url_rewrite_program/
+
+
+
+## Verlangsamung der Delivieries
+
+Die Resourcen müssen verlansamt zurück gegebne werden. Sonst läuft das Gif viel zu schnell. Die Langsamheit im Original kommt daher, dass diese Server über die Ganze welt verteilt sind. Dabei ist es auch so, dass die natürlich unterschiedliche Performance haben und unterschiedliche Distanzen.
+
+In unsere Simulation implementieren wir nun einen Delay der diesen Delay emuliert. Dabei ist das ein einfacher Sleep Befehl, da das voll simulieren von Netzwerk delay viel aufwändiger wäre.
+
+## Cache
+Der Cache kommt uns in den Weg beim simulieren der Langsamheit des Gifs. Sobald es einmal durchglaufen ist, werden die Seiten direkt aus
+dem Cache geliefert und dementsprechen werden dei Delays ignoriert.
+
+Deshalb habe ich mit den HTTP Mitteln Cache Control diesen Cache deaktiviert für diese Implementierung.
+
+Komplexere Implementaion: https://github.com/gin-gonic/contrib/blob/master/cache/cache.go#L111
+
+
+Das könnte natürlich noch viel detailierter implementiert werden. Zum Beispiel könnte man die Delays messen die auf der tatsächlichen laufen. Diese Messungen wären aber sehr komplex und aufwändig was den Rahmen sprengen würde.
+

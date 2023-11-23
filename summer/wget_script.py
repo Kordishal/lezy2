@@ -7,4 +7,4 @@ with open("datenbank.csv", "r") as f:
 
 for i in links:
     frame, link = i.strip().split(",")
-    subprocess.run(["wget", "--page-requisites", "--directory-prefix=archiv/webseite", link ])
+    subprocess.run(["wget", "--page-requisites", "--directory-prefix=summer/web", link ])
