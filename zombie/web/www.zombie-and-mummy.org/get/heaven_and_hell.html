@@ -1,0 +1,174 @@
+<html>
+<head>
+<title>ZOMBIE &amp; MUMMY get religious</title>
+
+
+<script language="JavaScript">
+<!--
+
+var stop = false	// blocker fuer oben und unten
+var max = 0			// maximale geschwindigkeit
+var pos = -5150	// aktuelle position
+var mov = 0			// bewegung
+var acc = 0			// beschleunigung
+
+var width = 0	// window size
+var height = 0
+
+
+var dom		= (document.getElementById)
+var ie		= (document.all)
+var opera	= (navigator.userAgent.indexOf("Opera")>-1)
+
+var obj
+
+
+
+
+function move()
+	{
+	if(stop==false)
+		{
+		pos += mov
+		mov += acc
+		if(mov>0)
+			if(mov>max) mov=max
+
+		if(mov<0)
+			if(mov<max) mov=max
+
+		if((mov>0) && (pos>=0))
+			{
+			stop=true
+			pos=0
+			mov=0
+			acc=-1
+			max=-100000
+
+			setTimeout("stop=false",3000)
+			}
+		
+
+		if((mov<0) && (pos<=(-10300+height)))
+			{
+			stop=true
+			pos=(-10300+height)
+			mov=0
+			acc=0.5
+			max=20
+
+			setTimeout("stop=false",5000)
+			}
+		}
+
+	obj.top = parseInt(pos) + "px"
+	}
+
+
+function size()
+	{
+	if(ie)
+		{
+		if(opera)
+			{
+			width  = innerWidth
+			height = innerHeight
+			}
+		else
+			{
+			width  = document.body.offsetWidth
+			height = document.body.offsetHeight
+			}
+		}
+	else
+		{
+		width  = innerWidth
+		height = innerHeight
+		}
+	}
+
+
+
+
+//-->
+</script>
+
+</head>
+
+<body bgcolor="darkred" style="margin:0px;padding:0px">
+
+<div style="display:none"><img src="get_religious.gif"></div>
+
+<div style="position:absolute;top:50%;left:50%;z-index:99;">
+	<div style="position:absolute;top:-85px;left:-80px;">
+		<iframe src="palm.html" frameborder="1" marginwidth="0" marginheight="0" width="160" height="172"></iframe>
+	</div>
+</div>
+
+<div id="world" style="position:absolute;top:-5150px;left:0px;width:100%">
+
+	<div style="position:absolute;top:0px;left:0px;">
+	<img src="bggradient4.jpg" width="100%" height="10300"></div>
+
+	<div style="position:absolute;top:28px;">
+	<img src="dolly.gif" width="300" height="349" alt="">
+	</div>
+
+
+
+	<div style="position:absolute;left:47%;top:10130px;"><IMG SRC="diddl009.gif" WIDTH="118" HEIGHT="128" BORDER=0 ALT=""></div>
+	<div style="position:absolute;left:1%;top:10000px;"><IMG SRC="diddl6.gif" WIDTH="167" HEIGHT="179" BORDER=0 ALT=""></div>
+	<div style="position:absolute;left:10%;top:10000px;"><IMG SRC="diddl004.gif" WIDTH="100" HEIGHT="88" BORDER=0 ALT=""></div>
+	<div style="position:absolute;left:13%;top:10000px;"><IMG SRC="diddl_bamse_fugl.gif" WIDTH="157" HEIGHT="126" BORDER=0 ALT=""></div>
+	<div style="position:absolute;left:20%;top:9930px;"><IMG SRC="kok.gif" WIDTH="206" HEIGHT="337" BORDER=0 ALT=""></div>
+	<div style="position:absolute;left:30%;top:10000px;"><IMG SRC="bal.gif" WIDTH="165" HEIGHT="135" BORDER=0 ALT=""></div>
+	<div style="position:absolute;left:36%;top:10000px;"><IMG SRC="buik.gif" WIDTH="227" HEIGHT="234" BORDER=0 ALT=""></div>
+	<div style="position:absolute;left:42%;top:10000px;"><IMG SRC="diddl002.gif" WIDTH="288" HEIGHT="156" BORDER=0 ALT=""></div>
+	<div style="position:absolute;left:52%;top:10000px;"><IMG SRC="snegl_diddl.gif" WIDTH="186" HEIGHT="230" BORDER=0 ALT=""></div>
+	<div style="position:absolute;left:65%;top:10000px;"><IMG SRC="farao_diddl.gif" WIDTH="100" HEIGHT="131" BORDER=0 ALT=""></div>
+	<div style="position:absolute;left:72%;top:10020px;"><IMG SRC="diddl011.gif" WIDTH="130" HEIGHT="129" BORDER=0 ALT=""></div>
+	<div style="position:absolute;left:73%;top:10000px;"><IMG SRC="diddl-schultuete-gr.gif" WIDTH="260" HEIGHT="249" BORDER=0 ALT=""></div>
+	<div style="position:absolute;left:15%;top:10120px;"><IMG SRC="hjerte_diddl.gif" WIDTH="125" HEIGHT="100" BORDER=0 ALT=""></div>
+	<div style="position:absolute;left:70%;top:10100px;"><IMG SRC="diddl005.gif" WIDTH="56" HEIGHT="165" BORDER=0 ALT=""></div>
+	<div style="position:absolute;left:23%;top:10100px;"><IMG SRC="diddl008.gif" WIDTH="132" HEIGHT="90" BORDER=0 ALT=""></div>
+
+</div>
+
+
+
+<script language="JavaScript">
+<!--
+
+
+	if(ie)
+		{
+		if(opera)
+			{
+			obj = document.getElementById("world").style
+			}
+		else
+			{
+			obj = document.all.world.style
+			}
+		}
+	else
+		{
+		obj = document.getElementById("world").style
+		}
+
+	mov = 0
+	max = 20
+	setTimeout("acc=1",3000)
+
+	setInterval("move()",100)
+	setInterval("size()",200)
+
+
+//-->
+</script>
+
+
+
+
+</body>
+</html>

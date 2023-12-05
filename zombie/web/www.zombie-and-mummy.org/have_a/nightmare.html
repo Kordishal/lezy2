@@ -1,0 +1,58 @@
+<!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+
+<title>ZOMB I E &amp; MUMMY have a nightmare</title>
+
+<script language="javascript">
+<!--
+
+var lights = 3
+
+var LIGHT = new Array()
+for(i=0;i<lights;i++)
+	{
+	LIGHT[i] = new Image()
+	LIGHT[i].src = "L" + i + ".gif"
+	}
+
+var BLACK = new Image()
+BLACK.src = "0.gif"
+
+function random(n)
+	{
+	n--
+	return Math.round(Math.random()*n)
+	}
+
+function lightning()
+	{
+	var POS = (random(lights))
+	eval("document.LIGHT" + POS + ".src = LIGHT[" + POS + "].src")
+	setTimeout("document.LIGHT" + POS +".src = BLACK.src", 200)
+	}
+
+//-->
+</script>
+
+</head>
+
+
+
+<body bgcolor="#000000" style="padding:0px;margin:0px;">
+
+<table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td width="50%"><img src="0.gif" width="100%" height="100%" name="LIGHT0"></td>
+		
+		<td valign="top">
+			<img src="0.gif" width="100%" height="50%" name="LIGHT2"><br>
+			<iframe src="palm.html" frameborder="1" marginwidth="0" marginheight="0" width="160" height="172"></iframe></td>
+
+		<td width="50%"><img src="0.gif" width="100%" height="100%" name="LIGHT1"></td>
+			
+	</tr>
+</table>
+
+</body>
+</html>

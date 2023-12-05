@@ -1,13 +1,12 @@
 package main
 
 import (
-	"bytes"
 	"context"
 	"errors"
+	"flag"
 	"fmt"
 	"github.com/elazarl/goproxy"
 	"github.com/gin-gonic/gin"
-	"io"
 	"log"
 	"net/http"
 	"net/url"
@@ -18,12 +17,20 @@ import (
 	"time"
 )
 
-func orPanic(err error) {
-	if err != nil {
-		panic(err)
-	}
+var (
+	staticFilePath string
+	proxyPort      string
+	staticPort     string
+)
+
+func init() {
+	flag.StringVar(&staticFilePath, "staticPath", "./data", "Path to static files")
+	flag.StringVar(&proxyPort, "proxyPort", "8080", "Port for the proxy server")
+	flag.StringVar(&staticPort, "staticPort", "8000", "Port for the static file server")
+	flag.Parse()
 }
 
+// List of hosts used in the summer project
 var hostList = []string{
 	"1x-upon.com",
 	"www.newrafael.com",
@@ -60,27 +67,30 @@ func main() {
 	proxy.Verbose = false
 	proxy.OnRequest().DoFunc(
 		func(r *http.Request, ctx *goproxy.ProxyCtx) (*http.Request, *http.Response) {
+			fmt.Printf("Host name to compare: %s\n", r.URL.Hostname())
 			if slices.Contains(hostList, r.URL.Hostname()) {
-				//fmt.Printf("found: %s\n", r.URL.String())
-				u, err := url.JoinPath("http://localhost:8000", r.URL.Hostname(), r.URL.Path)
+				// fmt.Printf("found: %s\n", r.URL.String())
+				u, err := url.JoinPath(fmt.Sprintf("http://localhost:%s", staticPort), r.URL.Hostname(), r.URL.Path)
 				if err != nil {
 					fmt.Printf("cannot join path: %v", err)
 					return r, nil
 				}
-
-				newRequest, err := http.NewRequest("GET", u, io.NopCloser(bytes.NewReader(nil)))
+				// fmt.Printf("redirecting to: %s\n", u)
+				newRequest, err := http.NewRequest("GET", u, nil)
 				if err != nil {
 					fmt.Printf("error creating request: %v", err)
 					return r, nil
 				}
 				//				newRequest.Header.Set("Cache-Control", "no-cache")
 				return newRequest, nil
+			} else {
+				fmt.Printf("not found: %s\n", r.URL.String())
 			}
 			return r, nil
 		})
 
 	proxySrv := &http.Server{
-		Addr:    ":8080",
+		Addr:    ":" + proxyPort,
 		Handler: proxy,
 	}
 
@@ -91,6 +101,9 @@ func main() {
 		}
 	}()
 
+	fmt.Printf("proxy server started on port: %s\n", proxyPort)
+	fmt.Printf("starting static file server on port: %s\n", staticPort)
+	fmt.Printf("serving files from: %s\n", staticFilePath)
 	router := gin.Default()
 
 	waiter := func() gin.HandlerFunc {
@@ -103,11 +116,10 @@ func main() {
 	}
 
 	router.Use(waiter())
-
-	router.StaticFS("/", http.Dir("./data/archiv/webseite/"))
+	router.StaticFS("/", http.Dir(staticFilePath))
 
 	staticSrv := &http.Server{
-		Addr:    ":8000",
+		Addr:    ":" + staticPort,
 		Handler: router,
 	}
 
