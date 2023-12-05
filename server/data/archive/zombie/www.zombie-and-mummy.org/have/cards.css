@@ -1,0 +1,33 @@
+body, td
+	{
+	background-color: silver;
+	font-family: tahoma, verdana, arial, geneva;
+	font-size: 9px;
+	}
+
+.card
+	{
+	background-color: white;
+	padding: 1px;
+	}
+
+
+input, textarea
+	{
+	font-family: tahoma, verdana, arial, geneva;
+	font-size: 9px;
+	}
+
+textarea
+	{
+	width: 160px;
+	height: 58px;
+	overflow:auto;
+	}
+
+form
+	{
+	margin: 0px;
+	padding: 0px;
+	padding-top: 4px;
+	}

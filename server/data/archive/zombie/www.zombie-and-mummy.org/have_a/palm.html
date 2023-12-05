@@ -1,0 +1,73 @@
+<html>
+<head>
+<title>ZOMB I E &amp; MUMMY have a nightmare</title>
+
+<script language="javascript">
+<!--
+
+// low-ambitious browser detection ....
+// netscape 4 has got to go
+var dom = (document.getElementById)
+var ie = (document.all)
+var opera = (navigator.userAgent.indexOf("Opera")>-1)
+
+var pos = 0;
+
+setInterval("HorrorScroller()",64)
+
+// fire lightning in parent document
+// if scroll position changed
+function HorrorScroller()
+	{
+	if(ie)
+		{
+
+		if(opera)
+			{
+			if(pageXOffset != pos)
+				{
+				flash()
+				pos = pageXOffset
+				}
+			}
+
+		else
+			{
+			if(document.body.scrollLeft != pos)
+				{
+				flash()
+				pos = document.body.scrollLeft
+				}
+			}
+		}
+	else if (dom)
+		{
+
+		if(pageXOffset != pos)
+			{
+			flash()
+			pos = pageXOffset
+			}
+		}
+
+	}
+
+
+function flash()
+	{
+	parent.lightning()
+	}
+
+function lightning() //dummy
+	{
+	return true
+	}
+
+//-->
+</script>
+
+</head>
+<body bgcolor="#ffffff">
+<img src="have_a_nightmare.gif">
+</body>
+</html>
